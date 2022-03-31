@@ -173,7 +173,7 @@ class MainWindow_controller(QtWidgets.QMainWindow):
    def histoEqualizationClicked(self):
       self.restoreOriginal()
       self.histoEqualization()
-      self.ui.statusLabel.setText("直方圖等化")
+      self.ui.statusLabel.setText("直方圖等化");
 
    def histoEqualization(self):
       self.convertGrayscale()
