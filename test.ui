@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1160</width>
+    <height>709</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>影像處理開發平台</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="imageDisplayer">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>40</y>
+      <width>1051</width>
+      <height>561</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1160</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>檔案</string>
+    </property>
+    <addaction name="actionOpen_Image"/>
+    <addaction name="actionSave_Image"/>
+   </widget>
+   <widget class="QMenu" name="menuSetting">
+    <property name="title">
+     <string>設定</string>
+    </property>
+    <widget class="QMenu" name="menu">
+     <property name="title">
+      <string>顯示或改變色彩空間</string>
+     </property>
+     <addaction name="action_convertGrayScale"/>
+    </widget>
+    <addaction name="action_ROI"/>
+    <addaction name="action_showHisto"/>
+    <addaction name="menu"/>
+    <addaction name="actionRestoreOriginal"/>
+   </widget>
+   <widget class="QMenu" name="menuImage_Processing">
+    <property name="title">
+     <string>影像處理</string>
+    </property>
+    <addaction name="action_thresholding"/>
+    <addaction name="action_histoEqualization"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuSetting"/>
+   <addaction name="menuImage_Processing"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen_Image">
+   <property name="text">
+    <string>Open Image</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSave_Image">
+   <property name="text">
+    <string>Save Image</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="action_ROI">
+   <property name="text">
+    <string>設定ROI</string>
+   </property>
+  </action>
+  <action name="action_showHisto">
+   <property name="text">
+    <string>顯示直方圖</string>
+   </property>
+  </action>
+  <action name="actionRestoreOriginal">
+   <property name="text">
+    <string>恢復原始圖片</string>
+   </property>
+  </action>
+  <action name="action_convertGrayScale">
+   <property name="text">
+    <string>轉換灰階</string>
+   </property>
+  </action>
+  <action name="action_thresholding">
+   <property name="text">
+    <string>影像二值化</string>
+   </property>
+  </action>
+  <action name="action_histoEqualization">
+   <property name="text">
+    <string>直方圖等化</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
