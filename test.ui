@@ -53,6 +53,8 @@
       <string>顯示或改變色彩空間</string>
      </property>
      <addaction name="action_convertGrayScale"/>
+     <addaction name="action_convertRGB"/>
+     <addaction name="action_convertHSV"/>
     </widget>
     <addaction name="action_ROI"/>
     <addaction name="action_showHisto"/>
@@ -63,8 +65,30 @@
     <property name="title">
      <string>影像處理</string>
     </property>
+    <widget class="QMenu" name="menu_2">
+     <property name="title">
+      <string>低通濾波</string>
+     </property>
+     <addaction name="action_gaussianFiltering"/>
+     <addaction name="action_medianFiltering"/>
+     <addaction name="action_averageFiltering"/>
+     <addaction name="action_bilateralFiltering"/>
+    </widget>
+    <widget class="QMenu" name="menu_3">
+     <property name="title">
+      <string>高通濾波</string>
+     </property>
+     <addaction name="action_gaussianHighPass"/>
+     <addaction name="action_laplacianFiltering"/>
+    </widget>
     <addaction name="action_thresholding"/>
     <addaction name="action_histoEqualization"/>
+    <addaction name="menu_2"/>
+    <addaction name="menu_3"/>
+    <addaction name="action_boundryDetection"/>
+    <addaction name="action_perspectiveTransform"/>
+    <addaction name="action_addNoise"/>
+    <addaction name="action_affineTransform"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSetting"/>
@@ -115,6 +139,66 @@
   <action name="action_histoEqualization">
    <property name="text">
     <string>直方圖等化</string>
+   </property>
+  </action>
+  <action name="action_convertRGB">
+   <property name="text">
+    <string>轉換RGB</string>
+   </property>
+  </action>
+  <action name="action_boundryDetection">
+   <property name="text">
+    <string>邊界偵測</string>
+   </property>
+  </action>
+  <action name="action_perspectiveTransform">
+   <property name="text">
+    <string>透視投影轉換</string>
+   </property>
+  </action>
+  <action name="action_gaussianFiltering">
+   <property name="text">
+    <string>高斯濾波</string>
+   </property>
+  </action>
+  <action name="action_medianFiltering">
+   <property name="text">
+    <string>中值濾波</string>
+   </property>
+  </action>
+  <action name="action_averageFiltering">
+   <property name="text">
+    <string>均值濾波</string>
+   </property>
+  </action>
+  <action name="action_addNoise">
+   <property name="text">
+    <string>加入影像雜訊</string>
+   </property>
+  </action>
+  <action name="action_bilateralFiltering">
+   <property name="text">
+    <string>雙邊濾波</string>
+   </property>
+  </action>
+  <action name="action_gaussianHighPass">
+   <property name="text">
+    <string>高斯高通濾波</string>
+   </property>
+  </action>
+  <action name="action_laplacianFiltering">
+   <property name="text">
+    <string>拉普拉斯濾波</string>
+   </property>
+  </action>
+  <action name="action_affineTransform">
+   <property name="text">
+    <string>仿射轉換</string>
+   </property>
+  </action>
+  <action name="action_convertHSV">
+   <property name="text">
+    <string>轉換HSV</string>
    </property>
   </action>
  </widget>

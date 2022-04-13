@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>598</width>
+    <height>532</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>仿射轉換</string>
+  </property>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>470</y>
+     <width>341</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QFrame" name="rotateFrame">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>30</y>
+     <width>461</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QSlider" name="rotateSlider">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>30</y>
+      <width>201</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>360</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="rotateTextLabel">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>58</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>旋轉角度</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="rotateValueLabel">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>30</y>
+      <width>58</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="translateXFrame">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>140</y>
+     <width>461</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QSlider" name="translateXSlider">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>30</y>
+      <width>201</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>-100</number>
+    </property>
+    <property name="maximum">
+     <number>100</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="translateTextLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>水平平移(百分比)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="translateXValueLabel">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>30</y>
+      <width>58</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="translateYFrame">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>250</y>
+     <width>461</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QSlider" name="translateYSlider">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>30</y>
+      <width>201</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>-100</number>
+    </property>
+    <property name="maximum">
+     <number>100</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="translateYTextLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>垂直平移(百分比)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="translateYValueLabel">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>30</y>
+      <width>58</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="flipFrame">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>360</y>
+     <width>461</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="flipTextLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>是否翻轉</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="flipCheckBox">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>30</y>
+      <width>85</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Dialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Dialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
