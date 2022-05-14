@@ -9,7 +9,10 @@ import os
 from matplotlib import pyplot as plt
 from thresholding_dialog import Ui_Dialog as Thresholding_dialog
 from warpAffine_dialog import Ui_Dialog as WarpAffine_dialog
-import sys
+import random
+
+random.seed(7414)
+
 
 class MainWindow_controller(QtWidgets.QMainWindow):
 
@@ -70,6 +73,7 @@ class MainWindow_controller(QtWidgets.QMainWindow):
       self.ui.warpAffine_dialog.translateXSlider.valueChanged.connect(self.update_translateXValue)
       self.ui.warpAffine_dialog.translateYSlider.valueChanged.connect(self.update_translateYValue)
       self.ui.action_CornerHarris.triggered.connect(self.cornerHarrisClicked)
+      self.ui.action_FindContours.triggered.connect(self.findContoursClicked)
 
 
    def imageDisplay(self, image):
@@ -386,3 +390,31 @@ class MainWindow_controller(QtWidgets.QMainWindow):
       # Threshold for an optimal value, it may vary depending on the image.
       self.cv2_image[dst > 0.01 * dst.max()] = [0, 0, 255]
       self.imageDisplay(self.cv2_image)
+
+
+   def findContoursClicked(self):
+      def thresh_callback(val):
+         threshold = val
+         # Detect edges using Canny
+         canny_output = cv2.Canny(target_image, threshold, threshold * 2)
+         # Find contours
+         contours, hierarchy = cv2.findContours(canny_output, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+         # Draw contours
+         drawing = np.zeros((canny_output.shape[0], canny_output.shape[1], 3), dtype=np.uint8)
+         for i in range(len(contours)):
+            color = (random.randint(0, 256), random.randint(0, 256), random.randint(0, 256))
+            cv2.drawContours(drawing, contours, i, color, 2, cv2.LINE_8, hierarchy, 0)
+         # Show in a window
+         self.imageDisplay(drawing)
+      # Convert image to gray and blur it
+      target_image = self.displayed_image.copy()
+      gray_image = cv2.cvtColor(self.displayed_image, cv2.COLOR_BGR2GRAY)
+      gray_image = cv2.blur(gray_image, (3, 3))
+      # Create Window
+      source_window = 'Source'
+      cv2.namedWindow(source_window)
+      cv2.imshow(source_window, gray_image)
+      max_thresh = 255
+      thresh = 125  # initial threshold
+      cv2.createTrackbar('Canny Thresh:', source_window, thresh, max_thresh, thresh_callback)
+      thresh_callback(thresh)

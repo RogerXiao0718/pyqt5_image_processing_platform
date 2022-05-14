@@ -91,6 +91,7 @@
     <addaction name="action_affineTransform"/>
     <addaction name="separator"/>
     <addaction name="action_CornerHarris"/>
+    <addaction name="action_FindContours"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSetting"/>
@@ -206,6 +207,11 @@
   <action name="action_CornerHarris">
    <property name="text">
     <string>Corner Harris</string>
+   </property>
+  </action>
+  <action name="action_FindContours">
+   <property name="text">
+    <string>Find Contours</string>
    </property>
   </action>
  </widget>

@@ -83,6 +83,8 @@ class Ui_MainWindow(object):
         self.action_convertHSV.setObjectName("action_convertHSV")
         self.action_CornerHarris = QtWidgets.QAction(MainWindow)
         self.action_CornerHarris.setObjectName("action_CornerHarris")
+        self.action_FindContours = QtWidgets.QAction(MainWindow)
+        self.action_FindContours.setObjectName("action_FindContours")
         self.menuFile.addAction(self.actionOpen_Image)
         self.menuFile.addAction(self.actionSave_Image)
         self.menu.addAction(self.action_convertGrayScale)
@@ -108,6 +110,7 @@ class Ui_MainWindow(object):
         self.menuImage_Processing.addAction(self.action_affineTransform)
         self.menuImage_Processing.addSeparator()
         self.menuImage_Processing.addAction(self.action_CornerHarris)
+        self.menuImage_Processing.addAction(self.action_FindContours)
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuSetting.menuAction())
         self.menubar.addAction(self.menuImage_Processing.menuAction())
@@ -147,6 +150,7 @@ class Ui_MainWindow(object):
         self.action_affineTransform.setText(_translate("MainWindow", "仿射轉換"))
         self.action_convertHSV.setText(_translate("MainWindow", "轉換HSV"))
         self.action_CornerHarris.setText(_translate("MainWindow", "Corner Harris"))
+        self.action_FindContours.setText(_translate("MainWindow", "Find Contours"))
 
 
 if __name__ == "__main__":
