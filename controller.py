@@ -69,6 +69,7 @@ class MainWindow_controller(QtWidgets.QMainWindow):
       self.ui.warpAffine_dialog.rotateSlider.valueChanged.connect(self.update_rotateValue)
       self.ui.warpAffine_dialog.translateXSlider.valueChanged.connect(self.update_translateXValue)
       self.ui.warpAffine_dialog.translateYSlider.valueChanged.connect(self.update_translateYValue)
+      self.ui.action_CornerHarris.triggered.connect(self.cornerHarrisClicked)
 
 
    def imageDisplay(self, image):
@@ -374,3 +375,14 @@ class MainWindow_controller(QtWidgets.QMainWindow):
       plt.imshow(transformed_image)
       plt.axis("off")
       plt.show()
+
+
+   def cornerHarrisClicked(self):
+      gray = cv2.cvtColor(self.cv2_image, cv2.COLOR_BGR2GRAY)
+      gray = np.float32(gray)
+      dst = cv2.cornerHarris(gray, 2, 3, 0.04)
+      # result is dilated for marking the corners, not important
+      dst = cv2.dilate(dst, None)
+      # Threshold for an optimal value, it may vary depending on the image.
+      self.cv2_image[dst > 0.01 * dst.max()] = [0, 0, 255]
+      self.imageDisplay(self.cv2_image)

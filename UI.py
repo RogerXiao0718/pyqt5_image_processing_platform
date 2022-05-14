@@ -81,6 +81,8 @@ class Ui_MainWindow(object):
         self.action_affineTransform.setObjectName("action_affineTransform")
         self.action_convertHSV = QtWidgets.QAction(MainWindow)
         self.action_convertHSV.setObjectName("action_convertHSV")
+        self.action_CornerHarris = QtWidgets.QAction(MainWindow)
+        self.action_CornerHarris.setObjectName("action_CornerHarris")
         self.menuFile.addAction(self.actionOpen_Image)
         self.menuFile.addAction(self.actionSave_Image)
         self.menu.addAction(self.action_convertGrayScale)
@@ -104,6 +106,8 @@ class Ui_MainWindow(object):
         self.menuImage_Processing.addAction(self.action_perspectiveTransform)
         self.menuImage_Processing.addAction(self.action_addNoise)
         self.menuImage_Processing.addAction(self.action_affineTransform)
+        self.menuImage_Processing.addSeparator()
+        self.menuImage_Processing.addAction(self.action_CornerHarris)
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuSetting.menuAction())
         self.menubar.addAction(self.menuImage_Processing.menuAction())
@@ -142,6 +146,7 @@ class Ui_MainWindow(object):
         self.action_laplacianFiltering.setText(_translate("MainWindow", "拉普拉斯濾波"))
         self.action_affineTransform.setText(_translate("MainWindow", "仿射轉換"))
         self.action_convertHSV.setText(_translate("MainWindow", "轉換HSV"))
+        self.action_CornerHarris.setText(_translate("MainWindow", "Corner Harris"))
 
 
 if __name__ == "__main__":

@@ -89,6 +89,8 @@
     <addaction name="action_perspectiveTransform"/>
     <addaction name="action_addNoise"/>
     <addaction name="action_affineTransform"/>
+    <addaction name="separator"/>
+    <addaction name="action_CornerHarris"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSetting"/>
@@ -199,6 +201,11 @@
   <action name="action_convertHSV">
    <property name="text">
     <string>轉換HSV</string>
+   </property>
+  </action>
+  <action name="action_CornerHarris">
+   <property name="text">
+    <string>Corner Harris</string>
    </property>
   </action>
  </widget>
