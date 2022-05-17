@@ -15,6 +15,7 @@ from utils.morph_shape import morph_shape
 from utils.createMorphologyWindow import createMorphWindow
 from utils.dilation import dilation
 from utils.affineTransform import affineTransform
+from utils.perspectiveTransform import perspectiveTransform
 
 random.seed(7414)
 
@@ -131,6 +132,7 @@ class MainWindow_controller(QtWidgets.QMainWindow):
 
    # 設定ROI終點，並透過比大小決定左上與右下座標，透過numpy的範圍取值來更新圖片
    def releaseROISelection(self, event):
+      # For ROISelection
       if self.ROISelectionActivated:
          self.ROISelection_endPos = event.localPos()
          start_x, start_y = int(self.ROISelection_startPos.x()), int(self.ROISelection_startPos.y())
@@ -144,13 +146,14 @@ class MainWindow_controller(QtWidgets.QMainWindow):
          plt.show()
          self.ui.statusLabel.setText(f"From: ({ltx}, {lty})  To: ({rbx}, {rby})")
          self.ROISelectionActivated = False
+      # For perspectiveTransform
       if self.perspectiveTransform_counter > 0:
          localPos = event.localPos()
          x, y = localPos.x(), localPos.y()
          self.perspectiveTransform_pts_dst.append([x, y])
          self.perspectiveTransform_counter -= 1
          if self.perspectiveTransform_counter == 0:
-            transformed_image = self.perspectiveTransform()
+            transformed_image = perspectiveTransform(self.cv2_image, self.perspectiveTransform_pst_src, self.perspectiveTransform_pts_dst)
             transformed_image = cv2.cvtColor(transformed_image, cv2.COLOR_BGR2RGB)
             plt.imshow(transformed_image)
             plt.axis('off')
@@ -341,14 +344,6 @@ class MainWindow_controller(QtWidgets.QMainWindow):
       ], dtype=np.float32)
       self.perspectiveTransform_pts_dst = []
       self.perspectiveTransform_counter = 4
-
-
-   def perspectiveTransform(self):
-      ori_image = self.displayed_image
-      self.perspectiveTransform_pts_dst = np.array(self.perspectiveTransform_pts_dst, dtype=np.float32)
-      opt_mapping_matrix, status = cv2.findHomography(self.perspectiveTransform_pst_src, self.perspectiveTransform_pts_dst)
-      transformed_image = cv2.warpPerspective(ori_image, opt_mapping_matrix, (ori_image.shape[1], ori_image.shape[0]))
-      return transformed_image
 
 
    def gaussianNoiseClicked(self, mean=0, sigma=0.5):
