@@ -14,19 +14,15 @@
    <string>影像處理開發平台</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="imageDisplayer">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>40</y>
-      <width>1051</width>
-      <height>561</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="imageDisplayer">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -92,6 +88,8 @@
     <addaction name="separator"/>
     <addaction name="action_CornerHarris"/>
     <addaction name="action_FindContours"/>
+    <addaction name="action_Erosion"/>
+    <addaction name="action_Dilation"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSetting"/>
@@ -212,6 +210,21 @@
   <action name="action_FindContours">
    <property name="text">
     <string>Find Contours</string>
+   </property>
+  </action>
+  <action name="action_Erosion">
+   <property name="text">
+    <string>Erosion</string>
+   </property>
+  </action>
+  <action name="action_Dilation">
+   <property name="text">
+    <string>Dilation</string>
+   </property>
+  </action>
+  <action name="action_Morphology">
+   <property name="text">
+    <string>Morphology</string>
    </property>
   </action>
  </widget>

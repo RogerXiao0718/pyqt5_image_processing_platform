@@ -10,6 +10,10 @@ from matplotlib import pyplot as plt
 from thresholding_dialog import Ui_Dialog as Thresholding_dialog
 from warpAffine_dialog import Ui_Dialog as WarpAffine_dialog
 import random
+from utils.erosion import erosion
+from utils.morph_shape import morph_shape
+from utils.createMorphologyWindow import createMorphWindow
+from utils.dilation import dilation
 
 random.seed(7414)
 
@@ -74,6 +78,8 @@ class MainWindow_controller(QtWidgets.QMainWindow):
       self.ui.warpAffine_dialog.translateYSlider.valueChanged.connect(self.update_translateYValue)
       self.ui.action_CornerHarris.triggered.connect(self.cornerHarrisClicked)
       self.ui.action_FindContours.triggered.connect(self.findContoursClicked)
+      self.ui.action_Erosion.triggered.connect(self.erosionClicked)
+      self.ui.action_Dilation.triggered.connect(self.dilationClicked)
 
 
    def imageDisplay(self, image):
@@ -418,3 +424,33 @@ class MainWindow_controller(QtWidgets.QMainWindow):
       thresh = 125  # initial threshold
       cv2.createTrackbar('Canny Thresh:', source_window, thresh, max_thresh, thresh_callback)
       thresh_callback(thresh)
+
+
+
+   def erosionClicked(self):
+      title_trackbar_element_shape = 'Element'
+      title_trackbar_kernel_size = 'Kernel size'
+      title_erosion_window = 'Erosion'
+      def erosionCallback(val):
+         src = self.displayed_image
+         erosion_size = cv2.getTrackbarPos(title_trackbar_kernel_size, title_erosion_window)
+         shape = morph_shape(cv2.getTrackbarPos(title_trackbar_element_shape, title_erosion_window))
+         dst = erosion(src, erosion_size, shape)
+         cv2.imshow(title_erosion_window, dst)
+
+      createMorphWindow(title_erosion_window, title_trackbar_element_shape, title_trackbar_kernel_size, erosionCallback)
+      cv2.imshow(title_erosion_window, self.displayed_image)
+
+   def dilationClicked(self):
+      title_trackbar_element_shape = 'Element'
+      title_trackbar_kernel_size = 'Kernel size'
+      title_dilation_window = 'Dilation'
+      def dilationCallback(val):
+         src = self.displayed_image
+         erosion_size = cv2.getTrackbarPos(title_trackbar_kernel_size, title_dilation_window)
+         shape = morph_shape(cv2.getTrackbarPos(title_trackbar_element_shape, title_dilation_window))
+         dst = dilation(src, erosion_size, shape)
+         cv2.imshow(title_dilation_window, dst)
+
+      createMorphWindow(title_dilation_window, title_trackbar_element_shape, title_trackbar_kernel_size, dilationCallback)
+      cv2.imshow(title_dilation_window, self.displayed_image)
