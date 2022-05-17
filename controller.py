@@ -16,6 +16,7 @@ from utils.createMorphologyWindow import createMorphWindow
 from utils.dilation import dilation
 from utils.affineTransform import affineTransform
 from utils.perspectiveTransform import perspectiveTransform
+from utils.gaussianNoise import gaussianNoise
 
 random.seed(7414)
 
@@ -346,15 +347,8 @@ class MainWindow_controller(QtWidgets.QMainWindow):
       self.perspectiveTransform_counter = 4
 
 
-   def gaussianNoiseClicked(self, mean=0, sigma=0.5):
-      normalized_image = self.cv2_image / 255
-      noise = np.random.normal(mean, sigma, normalized_image.shape)
-
-      gaussian_out = normalized_image + noise
-      gaussian_out = np.clip(gaussian_out, 0, 1)
-
-      gaussian_out = np.uint8(gaussian_out * 255)
-      self.cv2_image = gaussian_out
+   def gaussianNoiseClicked(self):
+      self.cv2_image = gaussianNoise(self.cv2_image)
       self.imageDisplay(self.cv2_image)
 
 
