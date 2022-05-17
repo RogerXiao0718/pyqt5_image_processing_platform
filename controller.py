@@ -14,6 +14,7 @@ from utils.erosion import erosion
 from utils.morph_shape import morph_shape
 from utils.createMorphologyWindow import createMorphWindow
 from utils.dilation import dilation
+from utils.affineTransform import affineTransform
 
 random.seed(7414)
 
@@ -365,26 +366,8 @@ class MainWindow_controller(QtWidgets.QMainWindow):
    def affineTransformClicked(self):
       returnValue = self.ui.warpAffine_dialog.exec_()
       if returnValue == QtWidgets.QDialog.Accepted:
-         H = self.cv2_image.shape[0]
-         W = self.cv2_image.shape[1]
-         center = (int(W / 2), int(H / 2))
-         degree = self.rotateValue * 2 / math.pi
-         rotationMatrix = cv2.getRotationMatrix2D(center, degree, scale=1)
-         transformed_image = cv2.warpAffine(self.cv2_image, rotationMatrix, (W, H))
+         affineTransform(self.cv2_image, self.rotateValue, self.translateXValue, self.translateYValue, self.flip)
 
-         translateMatrix = np.float32([
-            [1, 0, self.translateXValue],
-            [0, 1, self.translateYValue]
-         ])
-         transformed_image = cv2.warpAffine(transformed_image, translateMatrix, (W, H))
-
-         if self.flip:
-            transformed_image = cv2.flip(transformed_image, flipCode=1)
-
-      transformed_image = cv2.cvtColor(transformed_image, cv2.COLOR_BGR2RGB)
-      plt.imshow(transformed_image)
-      plt.axis("off")
-      plt.show()
 
 
    def cornerHarrisClicked(self):
